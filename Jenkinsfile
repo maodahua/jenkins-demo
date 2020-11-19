@@ -41,7 +41,7 @@ node('tap4fun-jnlp') {
     echo "6. Deploy Stage"
     if (userInput.Env == "Dev") {
         //deploy dev
-    } else if if (userInput.Env == "QA") {
+    } else if (userInput.Env == "QA") {
         //deploy qa
     } else {
         //deploy prod
