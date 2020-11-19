@@ -1,4 +1,4 @@
-node('haimaxy-jnlp') {
+node('tap4fun-jnlp') {
     stage('Prepare') {
         echo "1.Prepare Stage"
         checkout scm
@@ -13,16 +13,16 @@ node('haimaxy-jnlp') {
       echo "2.Test Stage"
     }
     stage('Build') {
-        echo "3.Build Docker Image Stage"
-        sh "docker build -t cnych/jenkins-demo:${build_tag} ."
-    }
+    echo "3.Build Docker Image Stage"
+    sh "docker build -t maodahua16/jenkins-demo:${build_tag} ."
+  }
     stage('Push') {
-        echo "4.Push Docker Image Stage"
-        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-            sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
-            sh "docker push cnych/jenkins-demo:${build_tag}"
-        }
+    echo "4. Push Docker Image Stage"
+    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+        sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
+        sh "docker push maodahua16/jenkins-demo:${build_tag}"
     }
+  }
     stage('Deploy') {
         echo "5. Deploy Stage"
         if (env.BRANCH_NAME == 'master') {
