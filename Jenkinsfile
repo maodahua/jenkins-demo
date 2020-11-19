@@ -24,7 +24,7 @@ node('tap4fun-jnlp') {
     echo "5. Change YAML File Stage"
     def userInput = input(
         id: 'userInput',
-        message: 'Choose a deploy environment'
+        message: 'Choose a deploy environment',
         parameters: [
             [
                 $class: 'ChoiceParameterDefinition',
