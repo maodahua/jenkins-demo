@@ -20,7 +20,7 @@ node('tap4fun-jnlp') {
         sh "docker push maodahua16/jenkins-demo:${build_tag}"
     }
   }
-  stage('YAML') {
+  stage('Deploy') {
     echo "5. Change YAML File Stage"
     def userInput = input(
         id: 'userInput',
@@ -36,9 +36,7 @@ node('tap4fun-jnlp') {
     echo "This is a deploy step to ${userInput.Env}"
     sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
     sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' k8s.yaml"
-  }
-  stage('Deploy') {
-    echo "6. Deploy Stage"
+    }
     if (userInput.Env == "Dev") {
         //deploy dev
     } else if (userInput.Env == "QA") {
