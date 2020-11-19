@@ -33,13 +33,12 @@ node('tap4fun-jnlp') {
             ]
         ]
     )
-    echo "This is a deploy step to ${userInput.Env}"
+    echo "This is a deploy step to ${userInput}"
     sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
     sh "sed -i 's/<BRANCH_NAME>/${env.BRANCH_NAME}/' k8s.yaml"
-    }
-    if (userInput.Env == "Dev") {
+    if (userInput == "Dev") {
         //deploy dev
-    } else if (userInput.Env == "QA") {
+    } else if (userInput == "QA") {
         //deploy qa
     } else {
         //deploy prod
