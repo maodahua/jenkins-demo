@@ -26,9 +26,11 @@ node('tap4fun-jnlp') {
         id: 'userInput',
         message: 'Choose a deploy environment'
         parameters: [
-            $class: 'ChoiceParameterDefinition',
-            choices: "Dev\nQA\nProd",
-            name: 'Env'
+            [
+                $class: 'ChoiceParameterDefinition',
+                choices: "Dev\nQA\nProd",
+                name: 'Env'
+            ]
         ]
     )
     echo "This is a deploy step to ${userInput.Env}"
