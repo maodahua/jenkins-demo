@@ -17,5 +17,5 @@ spec:
         imagePullPolicy: IfNotPresent
         name: jenkins-demo
         env:
-        - name: branch
+        - name: BRANCH
           value: <BRANCH_NAME>
